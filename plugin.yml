@@ -1,0 +1,21 @@
+name: SMFConnector
+version: 1.0.0
+description: Connects with SMF and allows skin/title changing
+author: Xu_Robert
+website: http://rxu.lincomlinux.org
+
+main: com.xu_robert.mcplugins.smfconnector.SMFConnector
+database: true
+depend: [SpoutEssentials, mChat]
+
+commands:
+  smfconnect:
+    description: Sync forum configuration with server.
+    aliases: [combust_me, combustMe]
+    permission: inferno.flagrate
+    usage: /<command> - Sync forum configuration
+
+permissions:
+  smfconnect.use:
+    description: Allows you to sync with /smfconnect
+    default: op
