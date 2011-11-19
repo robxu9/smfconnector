@@ -98,6 +98,7 @@ public class SMFConnector extends MMOPlugin{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				th.print("Could not write/load configuration! Do you have permissions?", -1);
+				th.print("Or maybe an invalid configuration? (Use Notepad++! It can spot invisible characters.)",-1);
 				onDisable();
 			}
 		}
