@@ -35,11 +35,11 @@ public class ThreadHelper {
 		}
 		else{
 			if (level==1)
-				log.warning("[SMFCon] " + message);
+				log.warning("[SMFCon ~] " + message);
 			else if (level==-1)
-				log.severe("[SMFCon ~] " + message);
+				log.severe("[SMFCon !] " + message);
 			else
-				log.info("[SMFCon !] " + message);
+				log.info("[SMFCon] " + message);
 		}
 	}
 }
