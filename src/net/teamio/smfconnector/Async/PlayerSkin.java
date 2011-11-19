@@ -1,6 +1,6 @@
 package net.teamio.smfconnector.Async;
 
-import net.teamio.smfconnector.ThreadHelper;
+import net.teamio.ThreadHelper;
 
 import org.bukkit.entity.Player;
 
@@ -9,7 +9,7 @@ import mmo.Core.MMOPlugin;
 
 public class PlayerSkin extends MMOPlugin{
 
-	private ThreadHelper th = new ThreadHelper();
+	private final ThreadHelper th = new ThreadHelper("SMFCon");
 	private Player p;
 	private String u;
 

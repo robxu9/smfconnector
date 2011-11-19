@@ -1,6 +1,5 @@
 package net.teamio.smfconnector;
 
-import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.regex.Pattern;
@@ -8,6 +7,7 @@ import java.util.regex.Pattern;
 import mmo.Core.MMOPlugin;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
+import net.teamio.ThreadHelper;
 import net.teamio.smfconnector.Async.PlayerCape;
 import net.teamio.smfconnector.Async.PlayerSkin;
 import net.teamio.smfconnector.Async.PlayerTitle;
@@ -35,7 +35,7 @@ import lib.PatPeter.SQLibrary.MySQL;
  */
 public class SMFConnector extends MMOPlugin{
 
-	protected final ThreadHelper th = new ThreadHelper();
+	protected final ThreadHelper th = new ThreadHelper("SMFCon");
 	private final SMFConnectorPlayerListener playerListener = new SMFConnectorPlayerListener(this);
 	private PluginManager pm = this.getServer().getPluginManager();
 	protected boolean noise;
@@ -71,16 +71,15 @@ public class SMFConnector extends MMOPlugin{
 			onDisable();
 		}
 		else{
-			th.print("Linked with Permissions, Chat, and Economy plugins.",0);
+			th.print("Linked with Permissions, and Chat plugins.",0);
 			/* setup methods */
 			try {
-				boolean defsetup = setupDefaults();
-				if (defsetup){
+				if (setupDefaults()){
 					th.print("New configuration has been written, disabling to avoid errors.",1);
 					th.print("Modify the new configuration and restart the server to load.",1);
 					onDisable();
 				}
-				else if (!defsetup){
+				else{
 					th.print("Configuration loaded.", 0);
 					if (!setupMySQL()){
 						th.print("Failed to establish a connection to MySQL, disabling.",-1);
@@ -330,9 +329,7 @@ public class SMFConnector extends MMOPlugin{
 
 		/* mysql configuration */
 		try{
-			th.mysqlconfig = getConfig();
-			th.mysqlconfigfile = new File(th.defdir + "mysql.yml");
-			th.mysqlconfigfile.mkdir();
+			th.actMySQLFile(false);
 			if (!th.mysqlconfig.contains("prefix")){
 				th.mysqlconfig.set("prefix", "smf_");
 				setup = true;
@@ -357,7 +354,7 @@ public class SMFConnector extends MMOPlugin{
 				th.mysqlconfig.set("password", "toor");
 				setup = true;
 			}
-			saveConfig();
+			th.actMySQLFile(true);
 		}catch(Exception e1){
 			e1.printStackTrace();
 			throw new ConfigurationException("Could not set defaults!");
@@ -365,9 +362,7 @@ public class SMFConnector extends MMOPlugin{
 		
 		/* defaults configuration */
 		try{
-			th.defaults = getConfig();
-			th.defaultsfile = new File(th.defdir + "defaults.yml");
-			th.defaultsfile.mkdir();
+			th.actDefaultsFile(false);
 			if (!th.defaults.contains("noise")){
 				th.defaults.set("noise", false);
 				setup = true;
@@ -388,20 +383,18 @@ public class SMFConnector extends MMOPlugin{
 				th.defaults.set("tables.title", "cust_minecr");
 				setup = true;
 			}
-			saveConfig();
+			th.actDefaultsFile(true);
 		}catch(Exception e1){
 			e1.printStackTrace();
 			throw new ConfigurationException("Could not set defaults!");
 		}
 		
-		/* title configuration */
-
 		return setup;
 	}
 
 
 	private boolean setupMySQL() {
-		connection = new MySQL(th.log, th.mysqlconfig.getString("prefix"),
+		connection = new MySQL(th.getLog(), th.mysqlconfig.getString("prefix"),
 				th.mysqlconfig.getString("hostname"),
 				th.mysqlconfig.getString("port"),
 				th.mysqlconfig.getString("database"),

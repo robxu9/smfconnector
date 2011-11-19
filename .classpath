@@ -17,5 +17,6 @@
 			<attribute name="javadoc_location" value="http://ci.milkbowl.net/job/Vault/javadoc/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/CommonFiles"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

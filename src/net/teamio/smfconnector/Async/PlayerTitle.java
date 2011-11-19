@@ -6,11 +6,11 @@ import org.bukkit.entity.Player;
 
 
 import net.milkbowl.vault.chat.Chat;
-import net.teamio.smfconnector.ThreadHelper;
+import net.teamio.ThreadHelper;
 
 public class PlayerTitle extends MMOPlugin{
 	
-	private ThreadHelper th = new ThreadHelper();
+	private final ThreadHelper th = new ThreadHelper("SMFCon");
 	private Player p;
 	private String t;
 	private Chat c;
