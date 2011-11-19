@@ -1,4 +1,4 @@
-package com.xu_robert.mcplugins.smfconnector;
+package net.teamio.smfconnector;
 
 import java.io.File;
 import java.util.logging.Logger;

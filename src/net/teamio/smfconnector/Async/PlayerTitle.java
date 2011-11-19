@@ -1,12 +1,12 @@
-package com.xu_robert.mcplugins.smfconnector.Async;
+package net.teamio.smfconnector.Async;
 
 import mmo.Core.MMOPlugin;
 
 import org.bukkit.entity.Player;
 
-import com.xu_robert.mcplugins.smfconnector.ThreadHelper;
 
 import net.milkbowl.vault.chat.Chat;
+import net.teamio.smfconnector.ThreadHelper;
 
 public class PlayerTitle extends MMOPlugin{
 	

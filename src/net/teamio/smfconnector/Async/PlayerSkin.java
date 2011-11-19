@@ -1,8 +1,9 @@
-package com.xu_robert.mcplugins.smfconnector.Async;
+package net.teamio.smfconnector.Async;
+
+import net.teamio.smfconnector.ThreadHelper;
 
 import org.bukkit.entity.Player;
 
-import com.xu_robert.mcplugins.smfconnector.ThreadHelper;
 
 import mmo.Core.MMOPlugin;
 

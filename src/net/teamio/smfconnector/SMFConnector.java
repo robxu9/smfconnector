@@ -1,4 +1,4 @@
-package com.xu_robert.mcplugins.smfconnector;
+package net.teamio.smfconnector;
 
 import java.io.File;
 import java.sql.ResultSet;
@@ -8,6 +8,9 @@ import java.util.regex.Pattern;
 import mmo.Core.MMOPlugin;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
+import net.teamio.smfconnector.Async.PlayerCape;
+import net.teamio.smfconnector.Async.PlayerSkin;
+import net.teamio.smfconnector.Async.PlayerTitle;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -18,9 +21,6 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.util.config.ConfigurationException;
 
-import com.xu_robert.mcplugins.smfconnector.Async.PlayerCape;
-import com.xu_robert.mcplugins.smfconnector.Async.PlayerSkin;
-import com.xu_robert.mcplugins.smfconnector.Async.PlayerTitle;
 
 import lib.PatPeter.SQLibrary.MySQL;
 

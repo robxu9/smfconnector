@@ -1,4 +1,4 @@
-package com.xu_robert.mcplugins.smfconnector;
+package net.teamio.smfconnector;
 
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerEvent;
