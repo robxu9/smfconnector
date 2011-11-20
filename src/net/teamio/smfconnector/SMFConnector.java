@@ -93,6 +93,9 @@ public class SMFConnector extends MMOPlugin{
 						th.print("Failed to setup listeners, disabling.",-1);
 						onDisable();
 					}
+					else{
+						th.print("Loaded!",0);
+					}
 				}
 			} catch (ConfigurationException e) {
 				// TODO Auto-generated catch block
