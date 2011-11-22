@@ -37,7 +37,6 @@ public class SMFConnector extends MMOPlugin{
 
 	protected final ThreadHelper th = new ThreadHelper("SMFCon");
 	private final SMFConnectorPlayerListener playerListener = new SMFConnectorPlayerListener(this);
-	private PluginManager pm = this.getServer().getPluginManager();
 	protected boolean noise;
 	protected boolean verbose;
 	public MySQL connection;
@@ -61,6 +60,7 @@ public class SMFConnector extends MMOPlugin{
 	 */
 	@Override
 	public void onEnable() {
+		PluginManager pm = this.getServer().getPluginManager();
 		th.print("Starting up SMFConnector version " + this.getDescription().getVersion(),0);
 		if (!setupPermission()){
 			th.print("Vault failed to setup permissions, disabling.",-1);
@@ -89,7 +89,7 @@ public class SMFConnector extends MMOPlugin{
 						th.print("Could not read defaults.yml, disabling.",-1);
 						onDisable();
 					}
-					else if (!setupListener()){
+					else if (!setupListener(pm)){
 						th.print("Failed to setup listeners, disabling.",-1);
 						onDisable();
 					}
@@ -415,7 +415,7 @@ public class SMFConnector extends MMOPlugin{
 		return true;
 	}
 	
-	private boolean setupListener(){
+	private boolean setupListener(PluginManager pm){
 		pm.registerEvent(Event.Type.PLAYER_RESPAWN, playerListener, Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.PLAYER_TELEPORT, playerListener, Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.PLAYER_JOIN, playerListener, Event.Priority.Normal, this);
