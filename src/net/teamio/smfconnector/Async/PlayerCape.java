@@ -9,25 +9,17 @@ import mmo.Core.MMOPlugin;
 
 public class PlayerCape extends MMOPlugin{
 
-	private final ThreadHelper th = new ThreadHelper("SMFCon");
-	private Player p;
-	private String u;
-
-	public PlayerCape(Player player, String url) {
-		p=player;
-		u=url;
-	}
-
-	public void changeCape(final boolean noise, final boolean verbose){
+	public static void changeCape(Player player, String url, boolean noise, boolean verbose){
+		final ThreadHelper th = new ThreadHelper("SMFCon");
 		if (noise)
-			th.print("Attempting to set cape of player " + p.getName(), 0);
+			th.print("Attempting to set cape of player " + player.getName(), 0);
 		if (verbose)
-			th.print(p,"Attempting to set your cape...");
-		MMOPlugin.mmoCore.setCloak(p, u);
+			th.print(player,"Attempting to set your cape...");
+		MMOPlugin.mmoCore.setCloak(player, url);
 		if (noise)
-			th.print("Set " + p.getName() + "'s cape successfully.", 0);
+			th.print("Set " + player.getName() + "'s cape successfully.", 0);
 		if (verbose)
-			th.print(p,"Set your cape successfully!");
+			th.print(player,"Set your cape successfully!");
 	}
 
 }

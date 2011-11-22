@@ -9,16 +9,8 @@ import mmo.Core.MMOPlugin;
 
 public class PlayerSkin extends MMOPlugin{
 
-	private final ThreadHelper th = new ThreadHelper("SMFCon");
-	private Player p;
-	private String u;
-
-	public PlayerSkin(Player player, String url) {
-		p=player;
-		u=url;
-	}
-
-	public void changeSkin(final boolean noise, final boolean verbose){
+	public static void changeSkin(Player p, String u, final boolean noise, final boolean verbose){
+		final ThreadHelper th = new ThreadHelper("SMFCon");
 		if (noise)
 			th.print("Attempting to set skin of player " + p.getName(), 0);
 		if (verbose)

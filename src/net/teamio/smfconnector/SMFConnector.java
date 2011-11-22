@@ -244,8 +244,7 @@ public class SMFConnector extends MMOPlugin{
 	private void schedCapeChange(final Player player, final String url){
 		getServer().getScheduler().scheduleAsyncDelayedTask(this, new Runnable() {
 			public void run() {
-				PlayerCape usercape = new PlayerCape(player,url);
-				usercape.changeCape(noise, verbose);
+				PlayerCape.changeCape(player,url,noise,verbose);
 			}
 		}, 0L);
 	}
@@ -273,8 +272,7 @@ public class SMFConnector extends MMOPlugin{
 	private void schedSkinChange(final Player player, final String url){
 		getServer().getScheduler().scheduleAsyncDelayedTask(this, new Runnable() {
 			public void run() {
-				PlayerSkin userskin = new PlayerSkin(player,url);
-				userskin.changeSkin(noise, verbose);
+				PlayerSkin.changeSkin(player,url,noise,verbose);
 			}
 		}, 0L);
 	}
@@ -302,8 +300,7 @@ public class SMFConnector extends MMOPlugin{
 	private void schedTitleChange(final Player player, final String heading){
 		getServer().getScheduler().scheduleAsyncDelayedTask(this, new Runnable() {
 			public void run() {
-				PlayerTitle newtitle = new PlayerTitle(player,heading,chat);
-				newtitle.changeTitle(noise, verbose);
+				PlayerTitle.changeTitle(player,heading,chat,noise,verbose);
 			}
 		}, 0L);
 	}
