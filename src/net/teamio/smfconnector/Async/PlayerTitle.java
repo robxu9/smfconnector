@@ -11,7 +11,7 @@ import net.teamio.ThreadHelper;
 public class PlayerTitle extends MMOPlugin{
 
 	public static void changeTitle(Player p, String t, Chat c, final boolean noise, final boolean verbose){
-		final ThreadHelper th = new ThreadHelper("SMFCon");
+		ThreadHelper th = new ThreadHelper("SMFCon");
 		if (noise)
 			th.print("Attempting to set title of player " + p.getName(), 0);
 		if (verbose)
