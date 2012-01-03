@@ -136,6 +136,7 @@ public class SMFConnector extends MMOPlugin{
 							schedSkinChange(player);
 						if(permission.playerHas(player.getWorld(),player.getName(),"smfcon.title"))
 							schedTitleChange(player);
+						th.print(player,ChatColor.YELLOW + "Scheduled syncing.");
 					}
 					else
 						th.print(player,ChatColor.RED + "You don't have permissions to sync.");
@@ -154,7 +155,7 @@ public class SMFConnector extends MMOPlugin{
 						if(permission.playerHas(list[i].getWorld(),list[i].getName(),"smfcon.cape"))
 							schedTitleChange(list[i]);
 					}
-					th.print(player, "Done syncing all online players.");
+					th.print(player,ChatColor.YELLOW + "Scheduled syncing all players.");
 				}
 				else
 					th.print(player,ChatColor.RED + "You don't have permissions to sync.");
